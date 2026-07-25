@@ -91,7 +91,7 @@
             </div>
             <div class="links">
                 <a href="{{ route('loginPage') }}">Login 1</a>
-                <a href="{{ route('loginRFIDPage') }}">Login With RFID yes</a>
+                <a href="{{ route('loginRFIDPage') }}">Login With RFID </a>
             </div>
         </div>
     </div>
