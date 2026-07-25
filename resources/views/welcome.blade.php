@@ -90,7 +90,7 @@
             <div class="title m-b-md">
             </div>
             <div class="links">
-                <a href="{{ route('loginPage') }}">Login</a>
+                <a href="{{ route('loginPage') }}">Login 1</a>
                 <a href="{{ route('loginRFIDPage') }}">Login With RFID</a>
             </div>
         </div>
