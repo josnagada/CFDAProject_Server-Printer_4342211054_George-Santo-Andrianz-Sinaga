@@ -1,66 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Title Project: **Centralized Printer Server Deployment Using ARM Microprocessor**
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A centralized **IoT-based Printer Server System** that enables students to print documents from multiple devices, including laptops, smartphones, and desktop computers over a network. Before a print job is executed, users must authenticate using an **RFID Card**, providing an additional layer of security to ensure that only authorized users can access their documents.
 
-## About Laravel
+1.1 Background
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Educational institutions often face several challenges in managing printing services, including:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+  1. Inefficient print job management
+  2. Distributed printer administration across multiple locations
+  3. Limited document security and user privacy
+  4. Difficulty monitoring and reporting printer usage
+  5. High implementation costs of commercial printing solutions.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+To address these issues, this project introduces a **Centralized Printer Server System** powered by a Raspberry Pi, providing a secure, efficient, and cost-effective printing solution.
 
-## Learning Laravel
+1.2 Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Role-based user authentication
+- User management
+- Document upload for printing
+- Microsoft Word (.doc/.docx) to PDF conversion
+- Token-based balance top-up system
+- Automatic printing cost calculation
+- RFID card authentication before printing
+- Print job execution through Raspberry Pi
+- Transaction history management
+- Secure logout functionality.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1.3 User Roles
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Role & Description
+ 1. **Administrator**: Manages user accounts, resets passwords, and controls account activation 
+ 2. **Staff**: Tops up student balances and monitors transaction history
+ 3. **Student**: Uploads files, converts documents, redeems balance tokens, and prints documents
 
-## Laravel Sponsors
+1.4 System Architecture
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```Start```
+Student
+    │
+    ▼
+ Laravel Web Application
+    │
+ RESTful API
+    │
+    ▼
+ Raspberry Pi 4
+    │
+ ┌──────┴────────┐
+ │               │
+RFID RC522    Printer
+ │
+LCD Touchscreen
+```finish``` 
 
-### Premium Partners
+1.5 Technology Stack
+ a. Software
+Software implementation involves the installation and configuration of software on the raspberry pi, including the raspberry pi OS CUPS for print management, and RFID authentication software, a web server (such as Apache or Nginx) is used to host a Laravel-based print management application that handles user interaction, document upload, and print queue management. 
+ 1. Laravel as Backend Framework
+ 2. PHP as Server-side Programming Language 
+ 3. MySQL as Relational Database 
+ 4. RESTful API as Data Communication 
+ 5. Apache / Nginx as Web Server 
+ 6. Python + Tkinter as Raspberry Pi Hardware Controller 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+ b. Hardware
+In the hardware implementation stage, the main components such as Raspberry Pi, RFID RC522, Printer, LCD and Cooling Fan are assembled and configured. This section contains screenshots of the hardware in finished form.
 
-## Contributing
+ 1. Raspberry Pi 4 Model B | Central server and device controller |
+ 2. RFID RC522 | User authentication |
+ 3. Printer | Document printing |
+ 4. 7" LCD Touchscreen | User interface |
+ 5. Cooling Fan | Raspberry Pi cooling system |
+ 6. USB Type-C Power Adapter | Primary power source |
+ 7. Power Bank | Backup power supply |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+ c. Database Structure
+The system consists of several main database tables:
+| Table | Description |
+ 1. | users | User accounts and roles |
+ 2. | admins | Administrator information |
+ 3. | karyawans | Staff information |
+ 4. | pelanggans | Student information |
+ 5. | files | Uploaded document records |
+ 6. | harga_cetaks | Printing price configuration |
+ 7. | token_saldo | Balance top-up tokens |
+ 8. | transaksi | Printing and balance transaction history |
 
-## Code of Conduct
+1.6 System Workflow
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+ 1. Users log in using **Email & Password** or an **RFID Card**.
+ 2. Students upload documents to the system.
+ 3. Documents can be converted to PDF if required.
+ 4. Students redeem a balance token to top up their account.
+ 5. The system calculates the printing cost automatically.
+ 6. Users authenticate using their RFID card.
+ 7. Raspberry Pi sends the print command to the connected printer.
+ 8. The document is printed successfully.
+ 9. Transaction history is stored in the database.
