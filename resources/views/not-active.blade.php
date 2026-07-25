@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="text-center">
-                    <h1>Belum aktif akunmu lae</h1>
+                    <h1>Belum aktif akunmu lae ya</h1>
                     <a href="{{ route('logout') }}">logout</a>
                 </div>
             </div>
