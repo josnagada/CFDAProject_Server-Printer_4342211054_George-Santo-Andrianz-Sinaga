@@ -88,7 +88,7 @@
         <div class="content">
             <img src="assets/img/android-chrome-512x512.png" alt="logo" width="270" height="250" class="logo">
             <div class="title m-b-md">
-                Server Printer 
+                Server Printer gacor
             </div>
             <div class="links">
                 <a href="{{ route('loginPage') }}">Login</a>
